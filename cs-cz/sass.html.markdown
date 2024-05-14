@@ -10,15 +10,14 @@ lang: cs-cz
 ---
 
 Sass je rozšíření jazyka CSS, který přidává nové vlastnosti jako proměnné, zanořování, mixiny a další.
-Sass (a další preprocesory, jako  [Less](http://lesscss.org/)) pomáhají vývojářům psát udržovatelný a neopakující (DRY) kód.
+Sass (a další preprocesory, jako [Less](http://lesscss.org/)) pomáhají vývojářům psát udržovatelný a neopakující (DRY) kód.
 
 Sass nabízí dvě možnosti syntaxe. SCSS, které je stejná jako CSS, akorát obsahuje nové vlastnosti Sassu. Nebo Sass, který používá odsazení místo složených závorek a středníků.
 Tento tutoriál bude používat syntaxi CSS.
 
-
 Pokud jste již obeznámeni s CSS3, budete schopni používat Sass relativně rychle. Nezprostředkovává nějaké úplně nové stylové možnosti, spíše nátroje, jak psát Vás CSS kód více efektivně, udržitelně a jednoduše.
 
-```scss
+```sass
 //Jednořádkové komentáře jsou ze Sassu při kompilaci vymazány
 
 /*Víceřádkové komentáře jsou naopak zachovány */
@@ -41,16 +40,16 @@ $body-font: 'Roboto', sans-serif;
 Teď, když chcete změnit barvu, stačí ji změnit pouze jednou.*/
 
 body {
-	background-color: $hlavni-barva;
-	color: $sekundarni-barva;
-	font-family: $body-font;
+  background-color: $hlavni-barva;
+  color: $sekundarni-barva;
+  font-family: $body-font;
 }
 
 /* Toto se zkompiluje do: */
 body {
-	background-color: #A3A4FF;
-	color: #51527F;
-	font-family: 'Roboto', sans-serif;
+  background-color: #A3A4FF;
+  color: #51527F;
+  font-family: 'Roboto', sans-serif;
 }
 
 
@@ -68,46 +67,46 @@ body {
 Použijte '@mixin' direktivu, plus jméno vašeho mixinu.*/
 
 @mixin na-stred {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	left: 0;
-	right: 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
 }
 
 /* Mixin vložíte pomocí '@include' a jména mixinu */
 
 div {
-	@include na-stred;
-	background-color: $hlavni-barva;
+  @include na-stred;
+  background-color: $hlavni-barva;
 }
 
 /*Což se zkompiluje do: */
 div {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	left: 0;
-	right: 0;
-	background-color: #A3A4FF;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  background-color: #A3A4FF;
 }
 
 
 /* Můžete využít mixiny i třeba pro takovéto ušetření práce: */
 
 @mixin velikost($sirka, $vyska) {
-	width: $sirka;
-	height: $vyska;
+  width: $sirka;
+  height: $vyska;
 }
 
 /*Stačí vložit argumenty: */
 
 .obdelnik {
-	@include velikost(100px, 60px);
+  @include velikost(100px, 60px);
 }
 
 .ctverec {
-	@include velikost(40px, 40px);
+  @include velikost(40px, 40px);
 }
 
 /* Toto se zkompiluje do: */
@@ -124,7 +123,7 @@ div {
 
 
 /*Funkce
-==============================*/   
+==============================*/
 
 
 
@@ -132,7 +131,7 @@ div {
 
 /* Funkce se spouštějí pomocí jejich jména, které následuje seznam argumentů uzavřený v kulatých závorkách. */
 body {
-  width: round(10.25px);    
+  width: round(10.25px);
 }
 
 .footer {
@@ -147,7 +146,7 @@ body {
 
 .footer {
   background-color: rgba(0, 0, 0, 0.75);
-}   
+}
 
 /* Můžete také definovat vlastní funkce. Funkce jsou velmi podobné mixinům.
    Když se snažíte vybrat mezi funkcí a mixinem, mějte na paměti, že mixiny
@@ -190,13 +189,13 @@ $hlavni obsah: vypocitat-pomer(600px, 960px);
 /*Dědění je způsob jak používat vlastnosti pro jeden selektor ve druhém. */
 
 .oznameni {
-	@include velikost(5em, 5em);
-	border: 5px solid $sekundarni-barva;
+  @include velikost(5em, 5em);
+  border: 5px solid $sekundarni-barva;
 }
 
 .oznameni-uspech {
-	@extend .oznameni;
-	border-color: #22df56;
+  @extend .oznameni;
+  border-color: #22df56;
 }
 
 /* Zkompiluje do: */
@@ -226,12 +225,12 @@ $hlavni obsah: vypocitat-pomer(600px, 960px);
 /*Sass vám umožňuje zanořovat selektory do selektorů */
 
 ul {
-	list-style-type: none;
-	margin-top: 2em;
+  list-style-type: none;
+  margin-top: 2em;
 
-	li {
-		background-color: #FF0000;
-	}
+  li {
+    background-color: #FF0000;
+  }
 }
 
 /* '&' nahradí rodičovský element. */
@@ -241,20 +240,20 @@ ul {
    Na příklad: */
 
 ul {
-	list-style-type: none;
-	margin-top: 2em;
+  list-style-type: none;
+  margin-top: 2em;
 
-	li {
-		background-color: red;
+  li {
+    background-color: red;
 
-		&:hover {
-		  background-color: blue;
-		}
+    &:hover {
+      background-color: blue;
+    }
 
-		a {
-		  color: white;
-		}
-	}
+    a {
+      color: white;
+    }
+  }
 }
 
 /* Zkompiluje do: */
@@ -279,7 +278,7 @@ ul li a {
 
 
 /*Částečné soubory a importy
-==============================*/   
+==============================*/
 
 
 
@@ -313,7 +312,7 @@ body {
 html, body, ul, ol {
   margin: 0;
   padding: 0;
-}   
+}
 
 body {
   font-size: 16px;
@@ -323,7 +322,7 @@ body {
 
 
 /*Zástupné selektory
-==============================*/  
+==============================*/
 
 
 
@@ -360,7 +359,7 @@ body {
 
 
 /*Matematické operace
-==============================*/   
+==============================*/
 
 
 
@@ -411,17 +410,15 @@ body {
 }
 ```
 
-
-
 ## SASS nebo Sass?
+
 Divili jste se někdy, jestli je Sass zkratka nebo ne? Pravděpodobně ne, ale řeknu vám to stejně. Jméno tohoto jazyka je slovo, "Sass", a ne zkratka.
 Protože to lidé konstatně píší jako "SASS", nazval ho autor jazyka jako "Syntactically Awesome StyleSheets" (Syntaktický úžasně styly).
 
-
 ## Procvičování Sassu
+
 Pokud si chcete hrát se Sassem ve vašem prohlížeči, navštivte [SassMeister](http://sassmeister.com/).
 Můžete používát oba dva způsoby zápisu, stačí si vybrat v nastavení SCSS nebo SASS.
-
 
 ## Kompatibilita
 
@@ -429,7 +426,7 @@ Sass může být použit v jakémkoliv projektu, jakmile máte program, pomocí 
 
 [QuirksMode CSS](http://www.quirksmode.org/css/) a [CanIUse](http://caniuse.com) jsou skvělé stránky pro kontrolu kompatibility.
 
-
 ## Kam dál?
+
 * [Oficiální dokumentace](http://sass-lang.com/documentation/file.SASS_REFERENCE.html)
 * [The Sass Way](http://thesassway.com/) obsahuje tutoriál a řadu skvělých článků

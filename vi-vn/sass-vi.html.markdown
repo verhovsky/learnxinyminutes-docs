@@ -42,16 +42,16 @@ $body-font: 'Roboto', sans-serif;
    tại 1 nơi để thay đổi tất cả những đoạn sử dụng biến */
 
 body {
-	background-color: $primary-color;
-	color: $secondary-color;
-	font-family: $body-font;
+  background-color: $primary-color;
+  color: $secondary-color;
+  font-family: $body-font;
 }
 
 /* Đoạn code trên sẽ được biên dịch thành: */
 body {
-	background-color: #A3A4FF;
-	color: #51527F;
-	font-family: 'Roboto', sans-serif;
+  background-color: #A3A4FF;
+  color: #51527F;
+  font-family: 'Roboto', sans-serif;
 }
 
 /* Cách sử dụng này giúp ta dễ dàng bảo trì hơn
@@ -71,18 +71,18 @@ body {
 $debug: true !default;
 
 @mixin debugmode {
-	@if $debug {
-		@debug "Debug mode enabled";
+  @if $debug {
+    @debug "Debug mode enabled";
 
-		display: inline-block;
-	}
-	@else {
-		display: none;
-	}
+    display: inline-block;
+  }
+  @else {
+    display: none;
+  }
 }
 
 .info {
-	@include debugmode;
+  @include debugmode;
 }
 
 /* Trong đoạn code trên, nếu $debug được đặt là true thì class .info sẽ được sinh ra và ngược lại.
@@ -90,7 +90,7 @@ $debug: true !default;
    Chế độ này rất có ích khi thực hiện debug trên file SCSS. */
 
 .info {
-	display: inline-block;
+  display: inline-block;
 }
 
 /* @for là khối vòng lặp trên một khoảng các giá trị.
@@ -99,42 +99,42 @@ $debug: true !default;
 
 // Lặp 3 lần (không kể 4)
 @for $c from 1 to 4 {
-	div:nth-of-type(#{$c}) {
-		left: ($c - 1) * 900 / 3;
-	}
+  div:nth-of-type(#{$c}) {
+    left: ($c - 1) * 900 / 3;
+  }
 }
 
 // Lặp 3 lần (kể cả 3)
 @for $c from 1 through 3 {
-	.myclass-#{$c} {
-		color: rgb($c * 255 / 3, $c * 255 / 3, $c * 255 / 3);
-	}
+  .myclass-#{$c} {
+    color: rgb($c * 255 / 3, $c * 255 / 3, $c * 255 / 3);
+  }
 }
 
 /* Biên dịch thành */
 
 div:nth-of-type(1) {
-	left: 0;
+  left: 0;
 }
 
 div:nth-of-type(2) {
-	left: 300;
+  left: 300;
 }
 
 div:nth-of-type(3) {
-	left: 600;
+  left: 600;
 }
 
 .myclass-1 {
-	color: #555555;
+  color: #555555;
 }
 
 .myclass-2 {
-	color: #aaaaaa;
+  color: #aaaaaa;
 }
 
 .myclass-3 {
-	color: white;
+  color: white;
 // SASS tự động chuyển mã #FFFFFF thành white (trắng)
 }
 
@@ -144,34 +144,34 @@ $columns: 4;
 $column-width: 80px;
 
 @while $columns > 0 {
-	.col-#{$columns} {
-		width: $column-width;
-		left: $column-width * ($columns - 1);
-	}
+  .col-#{$columns} {
+    width: $column-width;
+    left: $column-width * ($columns - 1);
+  }
 
-	$columns: $columns - 1;
+  $columns: $columns - 1;
 }
 
 /* Sẽ được biên dịch thành: */
 
 .col-4 {
-	width: 80px;
-	left: 240px;
+  width: 80px;
+  left: 240px;
 }
 
 .col-3 {
-	width: 80px;
-	left: 160px;
+  width: 80px;
+  left: 160px;
 }
 
 .col-2 {
-	width: 80px;
-	left: 80px;
+  width: 80px;
+  left: 80px;
 }
 
 .col-1 {
-	width: 80px;
-	left: 0px;
+  width: 80px;
+  left: 0px;
 }
 
 /* @each hoạt động giống như @for, nhưng sử dụng một danh sách (list) thay vì thứ tự số đếm.
@@ -180,29 +180,29 @@ $column-width: 80px;
 $social-links: facebook twitter linkedin reddit;
 
 .social-links {
-	@each $sm in $social-links {
-		.icon-#{$sm} {
-			background-image: url("images/#{$sm}.png");
-		}
-	}
+  @each $sm in $social-links {
+    .icon-#{$sm} {
+      background-image: url("images/#{$sm}.png");
+    }
+  }
 }
 
 /* Sẽ sinh ra: */
 
 .social-links .icon-facebook {
-	background-image: url("images/facebook.png");
+  background-image: url("images/facebook.png");
 }
 
 .social-links .icon-twitter {
-	background-image: url("images/twitter.png");
+  background-image: url("images/twitter.png");
 }
 
 .social-links .icon-linkedin {
-	background-image: url("images/linkedin.png");
+  background-image: url("images/linkedin.png");
 }
 
 .social-links .icon-reddit {
-	background-image: url("images/reddit.png");
+  background-image: url("images/reddit.png");
 }
 
 
@@ -214,46 +214,46 @@ $social-links: facebook twitter linkedin reddit;
    Sử dụng cú pháp '@mixin' kèm theo tên để tạo một mixin. */
 
 @mixin center {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	left: 0;
-	right: 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
 }
 
 /* Ta có thể dùng mixin bằng cú pháp '@include' kèm theo tên của mixin. */
 
 div {
-	@include center;
-	background-color: $primary-color;
+  @include center;
+  background-color: $primary-color;
 }
 
 /* Được biên dịch thành: */
 div {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	left: 0;
-	right: 0;
-	background-color: #A3A4FF;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  background-color: #A3A4FF;
 }
 
 /* Ta có thể dùng mixin để tạo nhanh các thuộc tính. */
 
 @mixin size($width, $height) {
-	width: $width;
-	height: $height;
+  width: $width;
+  height: $height;
 }
 
 /* Trong ví dụ này ta có thể tạo nhanh 2 thuộc tính width và height
    bằng cách sử dụng mixin size và truyền vào tham số cho width và height. */
 
 .rectangle {
-	@include size(100px, 60px);
+  @include size(100px, 60px);
 }
 
 .square {
-	@include size(40px, 40px);
+  @include size(40px, 40px);
 }
 
 /* Biên dịch thành: */
@@ -342,13 +342,13 @@ $main-content: calculate-percentage(600px, 960px);
 /* Mở rộng là cách để chia sẻ thuộc tính của một selector cho selector khác */
 
 .display {
-	@include size(5em, 5em);
-	border: 5px solid $secondary-color;
+  @include size(5em, 5em);
+  border: 5px solid $secondary-color;
 }
 
 .display-success {
-	@extend .display;
-	border-color: #22df56;
+  @extend .display;
+  border-color: #22df56;
 }
 
 /* Biên dịch thành: */
@@ -379,12 +379,12 @@ $main-content: calculate-percentage(600px, 960px);
 /* Sass cho phép ta có thể lồng selector bên trong selector */
 
 ul {
-	list-style-type: none;
-	margin-top: 2em;
+  list-style-type: none;
+  margin-top: 2em;
 
-	li {
-		background-color: #FF0000;
-	}
+  li {
+    background-color: #FF0000;
+  }
 }
 
 /* Selector bắt đầu bằng ký tự '&' sẽ thay thế ký tự '&'
@@ -395,20 +395,20 @@ ul {
    Ví dụ: */
 
 ul {
-	list-style-type: none;
-	margin-top: 2em;
+  list-style-type: none;
+  margin-top: 2em;
 
-	li {
-		background-color: red;
+  li {
+    background-color: red;
 
-		&:hover {
-		  background-color: blue;
-		}
+    &:hover {
+      background-color: blue;
+    }
 
-		a {
-		  color: white;
-		}
-	}
+    a {
+      color: white;
+    }
+  }
 }
 
 /* Biên dịch thành: */
@@ -569,19 +569,21 @@ body {
 ```
 
 ## SASS hay Sass?
+
 Bạn đã bao giờ thắc mắc liệu Sass có phải là từ viết tắt hay không? Nhiều nguwòi lầm tưởng nó là từ viết tắt nhưng thực chất tên của ngôn ngữ này lại là một từ - Sass.
 Do sự lầm tưởng như vậy và mọi người thường xuyên viết nó là "SASS", người sáng lập ra ngôn ngữ này đã đặt một cái tên hài hước cho nó là "Syntactically Awesome StyleSheets" (Thiết lập style có cú pháp một cách tuyệt vời đáng kinh ngạc).
 
-
 ## Tập sử dụng Sass
+
 Nếu bạn muốn thử dùng Sass trên trình duyệt, hãy ghé qua [SassMeister](http://sassmeister.com/). Bạn có thể dùng cả hai cú pháp, hoặc mở cài đặt và chọn Sass hoặc SCSS.
 
 ## Tính tương thích
+
 Sass có thể được dùng trong bất kì dự án nào miễn là ta có chương trình để biên dịch nó thành CSS. Ta cần chắc chắn rằng đoạn CSS đang dùng tương thích với các phiên bản trình duyệt mong muốn.
 
 [QuirksMode CSS](http://www.quirksmode.org/css/) và [CanIUse](http://caniuse.com) là nguồn thông tin tin cậy để kiểm tra tính tương thích của mã CSS.
 
-
 ## Tìm hiểu thêm
+
 * [Tài liệu chính thức](http://sass-lang.com/documentation/file.SASS_REFERENCE.html)
 * [The Sass Way](http://thesassway.com/) cung cấp các hướng dẫn từ cơ bản đến nâng cao cùng với các tin tức.

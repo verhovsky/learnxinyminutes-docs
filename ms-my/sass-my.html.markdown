@@ -14,7 +14,7 @@ Sass (dan prapemproses lain, seperti [Less](http://lesscss.org/)) membantu pemba
 Sass mempunyai dua perbezaan pilihan sintaks untuk dipilih. SCSS, yang mana mempunyai sintaks yang sama seperti CSS tetapi dengan ditambah ciri-ciri Sass. Atau Sass (sintaks asal), yang menggunakan indentasi bukannya tanda kurung dakap dan semikolon.
 Tutorial ini ditulis menggunakan SCSS.
 
-```scss
+```sass
 //Komen baris tunggal dikeluarkan apabila Sass dikompil ke CSS.
 
 /*Komen multi dikekalkan. */
@@ -37,16 +37,16 @@ $body-font: 'Roboto', sans-serif;
 Kini jika anda ingin mengubah warna, anda hanya perlu membuat perubahan sekali.*/
 
 body {
-	background-color: $primary-color;
-	color: $secondary-color;
-	font-family: $body-font;
+  background-color: $primary-color;
+  color: $secondary-color;
+  font-family: $body-font;
 }
 
 /* Ia akan dikompil kepada: */
 body {
-	background-color: #A3A4FF;
-	color: #51527F;
-	font-family: 'Roboto', sans-serif;
+  background-color: #A3A4FF;
+  color: #51527F;
+  font-family: 'Roboto', sans-serif;
 }
 
 
@@ -66,46 +66,46 @@ elemen, anda mungkin ingin menyimpan kod itu di dalam mixin.
 Guna arahan '@mixin', tambah dengan nama untuk mixin anda.*/
 
 @mixin center {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	left: 0;
-	right: 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
 }
 
 /* Anda boleh guna mixin bersama '@include' dan nama mixin. */
 
 div {
-	@include center;
-	background-color: $primary-color;
+  @include center;
+  background-color: $primary-color;
 }
 
 /*Ia akan dikompil kepada: */
 div {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	left: 0;
-	right: 0;
-	background-color: #A3A4FF;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  background-color: #A3A4FF;
 }
 
 
 /* Anda boleh guna mixins untuk membuat singkatan property. */
 
 @mixin size($width, $height) {
-	width: $width;
-	height: $height;
+  width: $width;
+  height: $height;
 }
 
 /*Yang mana anda boleh seru dengan memberi argumen lebar dan tinggi. */
 
 .rectangle {
-	@include size(100px, 60px);
+  @include size(100px, 60px);
 }
 
 .square {
-	@include size(40px, 40px);
+  @include size(40px, 40px);
 }
 
 /* Ia dikompil kepada: */
@@ -130,13 +130,13 @@ div {
 /*Extend ialah jalan untuk berkongsi sifat dengan satu pemilih dengan yang lain. */
 
 .display {
-	@include size(5em, 5em);
-	border: 5px solid $secondary-color;
+  @include size(5em, 5em);
+  border: 5px solid $secondary-color;
 }
 
 .display-success {
-	@extend .display;
-	border-color: #22df56;
+  @extend .display;
+  border-color: #22df56;
 }
 
 /* Dikompil kepada: */
@@ -161,12 +161,12 @@ div {
 /*Sass membenarkan anda untuk sarangkan pemilih dengan pemilih */
 
 ul {
-	list-style-type: none;
-	margin-top: 2em;
+  list-style-type: none;
+  margin-top: 2em;
 
-	li {
-		background-color: #FF0000;		
-	}
+  li {
+    background-color: #FF0000;
+  }
 }
 
 /* '&' akan digantikan dengan pemilih induk. */
@@ -175,20 +175,20 @@ ul {
 Sebagai contoh: */
 
 ul {
-	list-style-type: none;
-	margin-top: 2em;
+  list-style-type: none;
+  margin-top: 2em;
 
-	li {
-		background-color: red;
+  li {
+    background-color: red;
 
-		&:hover {
-		  background-color: blue;
-		}
+    &:hover {
+      background-color: blue;
+    }
 
-		a {
-		  color: white;
-		}
-	}
+    a {
+      color: white;
+    }
+  }
 }
 
 /* Dikompil kepada: */
@@ -211,17 +211,17 @@ ul li a {
 }
 ```
 
-
-
 ## SASS atau Sass?
+
 Adakah anda tertanya-tanya sama ada Sass adalah akronim atau tidak? Anda mungkin tidak perlu, tetapi saya akan memberitahu. Nama bahasa ini adalah perkataan, "Sass", dan tidak akronim.
 Kerana orang sentiasa menulis ia sebagai "Sass", pencipta bahasa bergurau memanggilnya "Syntactically Awesome StyleSheets".
 
 ## Berlatih Sass
+
 Jika anda ingin bermain dengan Sass di pelayar anda, lihat [SassMeister](http://sassmeister.com/).
 Anda boleh guna salah satu sintaks, hanya pergi ke tetapan dan pilih sama ada Sass atau SCSS.
 
-
 ## Bacaan lanjut
+
 * [Dokumentasi Rasmi](http://sass-lang.com/documentation/file.SASS_REFERENCE.html)
 * [The Sass Way](http://thesassway.com/) menyediakan tutorial (asas-lanjutan) dan artikel.

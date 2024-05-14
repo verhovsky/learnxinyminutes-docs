@@ -20,7 +20,7 @@ Sass有两种不同的语法可选用。SCSS的语法和CSS的相同，但增加
 
 如果你已熟悉CSS3，你可能相对能较快地掌握Sass。它并没有提供任何新的类型属性，而只是提供了一些工具使你能更高效的编写CSS，并且使维护更加容易。
 
-```scss
+```sass
 // 单行注释当Sass被编译成CSS后会被删除。
 
 /* 多行注释将保留. */
@@ -41,16 +41,16 @@ $body-font: 'Roboto', sans-serif;
    现在假如你想修改颜色，你只需修改一次即可。*/
 
 body {
-	background-color: $primary-color;
-	color: $secondary-color;
-	font-family: $body-font;
+  background-color: $primary-color;
+  color: $secondary-color;
+  font-family: $body-font;
 }
 
 /* 以上将编译成： */
 body {
-	background-color: #A3A4FF;
-	color: #51527F;
-	font-family: 'Roboto', sans-serif;
+  background-color: #A3A4FF;
+  color: #51527F;
+  font-family: 'Roboto', sans-serif;
 }
 
 /* 相比于在你的样式文件中逐个进行修改，这种方式维护性更好。 */
@@ -68,18 +68,18 @@ body {
 $debug: true !default;
 
 @mixin debugmode {
-	@if $debug {
-		@debug "Debug mode enabled";
+  @if $debug {
+    @debug "Debug mode enabled";
 
-		display: inline-block;
-	}
-	@else {
-		display: none;
-	}
+    display: inline-block;
+  }
+  @else {
+    display: none;
+  }
 }
 
 .info {
-	@include debugmode;
+  @include debugmode;
 }
 
 /* 如果$debug设置为了true, .info 将会显示; 如果设置为false那么
@@ -89,51 +89,51 @@ $debug: true !default;
 在调试你的SCSS时它对于检查变量很有用。*/
 
 .info {
-	display: inline-block;
+  display: inline-block;
 }
 
 /* @for是控制循环，它能遍历区间值。
 它对于设置一组元素的类型特别有用。
 有两种形式，"through"和"to"。前者包括最末那个值，
-而后者止于最末那个值。 
+而后者止于最末那个值。
 */
 
 @for $c from 1 to 4 {
-	div:nth-of-type(#{$c}) {
-		left: ($c - 1) * 900 / 3;
-	}
+  div:nth-of-type(#{$c}) {
+    left: ($c - 1) * 900 / 3;
+  }
 }
 
 @for $c from 1 through 3 {
-	.myclass-#{$c} {
-		color: rgb($c * 255 / 3, $c * 255 / 3, $c * 255 / 3);
-	}
+  .myclass-#{$c} {
+    color: rgb($c * 255 / 3, $c * 255 / 3, $c * 255 / 3);
+  }
 }
 
 /* 将编译成: */
 
 div:nth-of-type(1) {
-	left: 0;
+  left: 0;
 }
 
 div:nth-of-type(2) {
-	left: 300;
+  left: 300;
 }
 
 div:nth-of-type(3) {
-	left: 600;
+  left: 600;
 }
 
 .myclass-1 {
-	color: #555555;
+  color: #555555;
 }
 
 .myclass-2 {
-	color: #aaaaaa;
+  color: #aaaaaa;
 }
 
 .myclass-3 {
-	color: white;
+  color: white;
 // SASS automatically converts #FFFFFF to white
 }
 
@@ -143,34 +143,34 @@ $columns: 4;
 $column-width: 80px;
 
 @while $columns > 0 {
-	.col-#{$columns} {
-		width: $column-width;
-		left: $column-width * ($columns - 1);
-	}
+  .col-#{$columns} {
+    width: $column-width;
+    left: $column-width * ($columns - 1);
+  }
 
-	$columns: $columns - 1;
+  $columns: $columns - 1;
 }
 
 /* 将输出以下CSS: */
 
 .col-4 {
-	width: 80px;
-	left: 240px;
+  width: 80px;
+  left: 240px;
 }
 
 .col-3 {
-	width: 80px;
-	left: 160px;
+  width: 80px;
+  left: 160px;
 }
 
 .col-2 {
-	width: 80px;
-	left: 80px;
+  width: 80px;
+  left: 80px;
 }
 
 .col-1 {
-	width: 80px;
-	left: 0px;
+  width: 80px;
+  left: 0px;
 }
 
 /* @each函数类似@for, 除了它使用一个列表而不是序列值
@@ -180,29 +180,29 @@ $column-width: 80px;
 $social-links: facebook twitter linkedin reddit;
 
 .social-links {
-	@each $sm in $social-links {
-		.icon-#{$sm} {
-			background-image: url("images/#{$sm}.png");
-		}
-	}
+  @each $sm in $social-links {
+    .icon-#{$sm} {
+      background-image: url("images/#{$sm}.png");
+    }
+  }
 }
 
 /* 将输出: */
 
 .social-links .icon-facebook {
-	background-image: url("images/facebook.png");
+  background-image: url("images/facebook.png");
 }
 
 .social-links .icon-twitter {
-	background-image: url("images/twitter.png");
+  background-image: url("images/twitter.png");
 }
 
 .social-links .icon-linkedin {
-	background-image: url("images/linkedin.png");
+  background-image: url("images/linkedin.png");
 }
 
 .social-links .icon-reddit {
-	background-image: url("images/reddit.png");
+  background-image: url("images/reddit.png");
 }
 
 
@@ -215,45 +215,45 @@ $social-links: facebook twitter linkedin reddit;
 使用'@mixin'指令，再为你的mixin加上一个名称。*/
 
 @mixin center {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	left: 0;
-	right: 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
 }
 
 /* 你可以通过'@include'及mixin名来调用mixin。 */
 
 div {
-	@include center;
-	background-color: $primary-color;
+  @include center;
+  background-color: $primary-color;
 }
 
 /* 将编译成: */
 div {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	left: 0;
-	right: 0;
-	background-color: #A3A4FF;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  background-color: #A3A4FF;
 }
 
 /* 你可以使用mixin来创建一个快捷属性。*/
 
 @mixin size($width, $height) {
-	width: $width;
-	height: $height;
+  width: $width;
+  height: $height;
 }
 
 /* 你可以通过传入width和height参数来调用它。*/
 
 .rectangle {
-	@include size(100px, 60px);
+  @include size(100px, 60px);
 }
 
 .square {
-	@include size(40px, 40px);
+  @include size(40px, 40px);
 }
 
 /* 编译成: */
@@ -338,13 +338,13 @@ $main-content: calculate-percentage(600px, 960px);
 /* 扩展是在选择子间共享属性的一种方法。 */
 
 .display {
-	@include size(5em, 5em);
-	border: 5px solid $secondary-color;
+  @include size(5em, 5em);
+  border: 5px solid $secondary-color;
 }
 
 .display-success {
-	@extend .display;
-	border-color: #22df56;
+  @extend .display;
+  border-color: #22df56;
 }
 
 /* 编译成: */
@@ -373,12 +373,12 @@ $main-content: calculate-percentage(600px, 960px);
 /* Sass允许在选择子中嵌套选择子 */
 
 ul {
-	list-style-type: none;
-	margin-top: 2em;
+  list-style-type: none;
+  margin-top: 2em;
 
-	li {
-		background-color: #FF0000;
-	}
+  li {
+    background-color: #FF0000;
+  }
 }
 
 /* '&'将被父选择子替换。*/
@@ -388,20 +388,20 @@ ul {
 例如： */
 
 ul {
-	list-style-type: none;
-	margin-top: 2em;
+  list-style-type: none;
+  margin-top: 2em;
 
-	li {
-		background-color: red;
+  li {
+    background-color: red;
 
-		&:hover {
-		  background-color: blue;
-		}
+    &:hover {
+      background-color: blue;
+    }
 
-		a {
-		  color: white;
-		}
-	}
+    a {
+      color: white;
+    }
+  }
 }
 
 /* 编译成： */
@@ -560,23 +560,25 @@ body {
 ```
 
 ## SASS还是Sass?
+
 该语言的名字，“Sass”，是一个词，不是一个缩写。
 你有没想过Sass是否是一个缩写词？你可能没有，但我反正会告诉你。
 该语言的名字是一个单词，不是一个缩写词。
 由于人们老是将它写成"SASS"，语言的作者开玩笑地称它为"Syntactically Awesome StyleSheets"。
 
-
 ## 实践Sass
+
 如果你想在你的浏览器中尝试Sass，参阅[SassMeister](http://sassmeister.com/)。
 你可以选用任一种语法，只需进到设置页然后选择Sass或SCSS。
 
 
 ## 兼容性
+
 Sass可以用于任何项目中，只要你有程序能将它编译成CSS即可。你还需要验证你所使用的CSS是否与你的目标浏览器兼容。
 
 [QuirksMode CSS](http://www.quirksmode.org/css/)和[CanIUse](http://caniuse.com)对于检查兼容性来说都是不错的资源。
 
-
 ## 延伸阅读资料
+
 * [Official Documentation](http://sass-lang.com/documentation/file.SASS_REFERENCE.html)
 * [The Sass Way](http://thesassway.com/) 上提供了教程(初学者-高级)和文章。

@@ -6,9 +6,10 @@ contributors:
   - ["Sean Corrales", "https://github.com/droidenator"]
   - ["Kyle Mendes", "https://github.com/pink401k"]
 translators:
-    - ["Philipp Bochmann", "https://github.com/phbo85"]  
+  - ["Philipp Bochmann", "https://github.com/phbo85"]
 lang: de-de
 ---
+
 Sass ist eine CSS-erweiternde Sprache, welche Features wie Variablen, Verschachtelung, Mixins und mehr hinzufügt.
 Sass (und andere Präprozessoren wie [Less](http://lesscss.org/)) helfen Entwicklern dabei ihren Code wartbar und DRY (Don't Repeat Yourself - wiederhole dich nicht) zu schreiben.
 
@@ -17,8 +18,7 @@ Dieses Tutorial wurde mit SCSS geschrieben.
 
 Wenn du bereits mit CSS3 vertraut bist, wirst du dir Sass relativ schnell aneignen. Es bietet keine neuen Styling-Eigenschaft, sondern Werkzeuge mit denen du dein CSS effizienter schreiben kannst und die Wartung viel einfacher machst.
 
-
-```scss
+```sass
 //Einzeilige Kommentare werden entfernt, wenn Sass zu CSS kompiliert wird.
 
 /* Mehrzeilige Kommentare bleiben bestehen. */
@@ -41,16 +41,16 @@ $body-font: 'Roboto', sans-serif;
 Wenn du nun eine Farbe ändern willst, musst du das nur einmal tun. */
 
 body {
-	background-color: $primary-color;
-	color: $secondary-color;
-	font-family: $body-font;
+  background-color: $primary-color;
+  color: $secondary-color;
+  font-family: $body-font;
 }
 
 /* Das wird kompiliert zu: */
 body {
-	background-color: #A3A4FF;
-	color: #51527F;
-	font-family: 'Roboto', sans-serif;
+  background-color: #A3A4FF;
+  color: #51527F;
+  font-family: 'Roboto', sans-serif;
 }
 
 
@@ -70,46 +70,46 @@ Element schreiben musst, kannst du ihn in einem mixin speichern.
 Dazu benutzt du '@mixin' plus einem Namen für dein mixin. */
 
 @mixin center {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	left: 0;
-	right: 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
 }
 
 /* Du kannst das mixin mit '@include' und dem Namen des mixin benutzen. */
 
 div {
-	@include center;
-	background-color: $primary-color;
+  @include center;
+  background-color: $primary-color;
 }
 
 /* Das kompiliert zu: */
 div {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	left: 0;
-	right: 0;
-	background-color: #A3A4FF;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  background-color: #A3A4FF;
 }
 
 
 /* Du kannst Mixins benutzen, um shorthand Eigenschaften zu erstellen. */
 
 @mixin size($width, $height) {
-	width: $width;
-	height: $height;
+  width: $width;
+  height: $height;
 }
 
 /* Diese kannst du aufrufen und width und height als Parameter übergeben. */
 
 .rectangle {
-	@include size(100px, 60px);
+  @include size(100px, 60px);
 }
 
 .square {
-	@include size(40px, 40px);
+  @include size(40px, 40px);
 }
 
 /* Compiles to: */
@@ -198,13 +198,13 @@ $main-content: calculate-percentage(600px, 960px);
    zu teilen. */
 
 .display {
-	@include size(5em, 5em);
-	border: 5px solid $secondary-color;
+  @include size(5em, 5em);
+  border: 5px solid $secondary-color;
 }
 
 .display-success {
-	@extend .display;
-	border-color: #22df56;
+  @extend .display;
+  border-color: #22df56;
 }
 
 /* Kompiliert: */
@@ -236,12 +236,12 @@ $main-content: calculate-percentage(600px, 960px);
 /* Sass erlaubt es Selektoren in Selektoren zu verschachteln. */
 
 ul {
-	list-style-type: none;
-	margin-top: 2em;
+  list-style-type: none;
+  margin-top: 2em;
 
-	li {
-		background-color: #FF0000;
-	}
+  li {
+    background-color: #FF0000;
+  }
 }
 
 /* '&' wird durch den übergeordneten Selektor ersetzt. */
@@ -252,20 +252,20 @@ ul {
    Zum Beispiel: */
 
 ul {
-	list-style-type: none;
-	margin-top: 2em;
+  list-style-type: none;
+  margin-top: 2em;
 
-	li {
-		background-color: red;
+  li {
+    background-color: red;
 
-		&:hover {
-		  background-color: blue;
-		}
+    &:hover {
+      background-color: blue;
+    }
 
-		a {
-		  color: white;
-		}
-	}
+    a {
+      color: white;
+    }
+  }
 }
 
 /* Kompiliert: */
@@ -428,20 +428,23 @@ body {
 ```
 
 ## SASS oder Sass?
+
 Hast du dich jemals gefragt, ob Sass ein Akronym ist oder nicht? Hast du wahrscheinlich nicht, aber ich sage es dir trotzdem. Der Name der Sprache ist ein Wort, "Sass", und kein Akronym.
 Da die Leute durchgehend "SASS" geschrieben haben, hat der Ersteller der Sprache es scherzhaft "Syntactically Awesome StyleSheets" genannt.
 
 ## Sass üben
+
 Wenn du mit Sass in deinem Browser spielen willst, schau dir [SassMeister](http://sassmeister.com/) an.
 Du kannst beide Syntax-Optionen benutzen, gehe einfach in die Einstellungen und wähle entweder Sass oder SCSS.
 
 ## Kompatibilität
+
 Sass kann in jedem Projekt verwendet werden, solange du ein Programm hast, um es in CSS zu kompilieren.
 Du solltest verifizieren, dass das CSS, was du verwendest, mit deinen Ziel-Browsern kompatibel ist.
 
 [QuirksMode CSS](http://www.quirksmode.org/css/) und [CanIUse](http://caniuse.com) sind gute Resourcen um die Kompatibilät zu überpüfen.
 
-
 ## Literaturhinweise
+
 * [Offizielle Dokumentation](http://sass-lang.com/documentation/file.SASS_REFERENCE.html)
 * [The Sass Way](http://thesassway.com/) bietet Tutorials (Anfänger bis Fortgeschritten) und Artikel.

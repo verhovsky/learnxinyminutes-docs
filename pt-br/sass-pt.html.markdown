@@ -19,7 +19,7 @@ Este tutorial é escrito usando SCSS.
 
 Se você já está familiarizado com CSS3, você será capaz de pegar Sass de forma relativamente rápida. Ele não fornece quaisquer novas opções de estilo, mas sim as ferramentas para escrever sua CSS de forma mais eficiente e fazer a manutenção mais facilmente.
 
-```scss
+```sass
 // Comentários de linha única são removidos quando Sass é compilado para CSS.
 
 /* Comentários multi-line são preservados. */
@@ -42,16 +42,16 @@ $body-font: 'Roboto', sans-serif;
 Agora, se você quer mudar a cor, você só tem que fazer a mudança uma vez. */
 
 body {
-	background-color: $primary-color;
-	color: $secondary-color;
-	font-family: $body-font;
+  background-color: $primary-color;
+  color: $secondary-color;
+  font-family: $body-font;
 }
 
 /* Quando compilar ficaria assim: */
 body {
-	background-color: #A3A4FF;
-	color: #51527F;
-	font-family: 'Roboto', sans-serif;
+  background-color: #A3A4FF;
+  color: #51527F;
+  font-family: 'Roboto', sans-serif;
 }
 
 
@@ -72,46 +72,46 @@ elemento, você pode armazenar esse código em um mixin.
 Use a diretiva '@mixin', além de um nome para o seu mixin. */
 
 @mixin center {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	left: 0;
-	right: 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
 }
 
 /* Você pode usar o mixin com '@include' e o nome mixin. */
 
 div {
-	@include center;
-	background-color: $primary-color;
+  @include center;
+  background-color: $primary-color;
 }
 
 /* Após compilar ficaria assim: */
 div {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	left: 0;
-	right: 0;
-	background-color: #A3A4FF;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  background-color: #A3A4FF;
 }
 
 
 /* Você pode usar mixins para criar uma propriedade estenográfica. */
 
 @mixin size($width, $height) {
-	width: $width;
-	height: $height;
+  width: $width;
+  height: $height;
 }
 
 /* O que você pode invocar passando argumentos de largura e altura. */
 
 .rectangle {
-	@include size(100px, 60px);
+  @include size(100px, 60px);
 }
 
 .square {
-	@include size(40px, 40px);
+  @include size(40px, 40px);
 }
 
 /* Isso compilado ficará assim: */
@@ -137,7 +137,7 @@ div {
 
 /* Funções pode ser chamado usando seu nome e passando o
     argumentos necessários */
-    
+
 body {
   width: round(10.25px);
 }
@@ -156,11 +156,11 @@ body {
   background-color: rgba(0, 0, 0, 0.75);
 }
 
-/* Você também pode definir suas próprias funções. As funções são muito semelhantes 
+/* Você também pode definir suas próprias funções. As funções são muito semelhantes
    aos mixins. Ao tentar escolher entre uma função ou um mixin, lembre
    que mixins são os melhores para gerar CSS enquanto as funções são melhores para
-   lógica que pode ser usado em todo o seu código Sass. Os exemplos na 
-   seção "Operações Math" são candidatos ideais para se tornar um função 
+   lógica que pode ser usado em todo o seu código Sass. Os exemplos na
+   seção "Operações Math" são candidatos ideais para se tornar um função
    reutilizável. */
 
 /* Esta função terá um tamanho de destino e o tamanho do pai (parent), calcular
@@ -200,13 +200,13 @@ $main-content: calculate-percentage(600px, 960px);
 /*Extend é uma maneira de compartilhar as propriedades de um seletor com outro. */
 
 .display {
-	@include size(5em, 5em);
-	border: 5px solid $secondary-color;
+  @include size(5em, 5em);
+  border: 5px solid $secondary-color;
 }
 
 .display-success {
-	@extend .display;
-	border-color: #22df56;
+  @extend .display;
+  border-color: #22df56;
 }
 
 /* Compiles to: */
@@ -237,12 +237,12 @@ $main-content: calculate-percentage(600px, 960px);
 /* Sass permite seletores ninhos dentro seletores */
 
 ul {
-	list-style-type: none;
-	margin-top: 2em;
+  list-style-type: none;
+  margin-top: 2em;
 
-	li {
-		background-color: #FF0000;
-	}
+  li {
+    background-color: #FF0000;
+  }
 }
 
 /* '&' será substituído pelo selector pai (parent). */
@@ -253,20 +253,20 @@ Por exemplo: */
 
 
 ul {
-	list-style-type: none;
-	margin-top: 2em;
+  list-style-type: none;
+  margin-top: 2em;
 
-	li {
-		background-color: red;
+  li {
+    background-color: red;
 
-		&:hover {
-		  background-color: blue;
-		}
+    &:hover {
+      background-color: blue;
+    }
 
-		a {
-		  color: white;
-		}
-	}
+    a {
+      color: white;
+    }
+  }
 }
 
 /* Compila para: */
@@ -337,7 +337,7 @@ body {
 
 
 /* Placeholder Selectors
-==============================*/  
+==============================*/
 
 
 /* Os Placeholders são úteis na criação de uma declaração CSS para ampliar. Se você
@@ -424,17 +424,15 @@ body {
 }
 ```
 
-
-
 ## SASS ou Sass?
+
 Alguma vez você já se perguntou se Sass é um acrônimo ou não? Você provavelmente não tem, mas vou dizer-lhe de qualquer maneira. O nome do idioma é uma palavra, "Sass", e não uma sigla.
 Porque as pessoas estavam constantemente a escrevê-lo como "SASS", o criador da linguagem de brincadeira chamou de "StyleSheets Sintaticamente Incríveis".
 
-
 ## Prática Sass
+
 Se você quiser jogar com Sass em seu navegador, vá para [SassMeister](http://sassmeister.com/).
 Você pode usar uma sintaxe, basta ir para as configurações e selecionar Sass ou SCSS.
-
 
 ## Compatibilidade
 
@@ -444,7 +442,7 @@ com os seus navegadores de destino.
 
 [QuirksMode CSS](http://www.quirksmode.org/css/) e [CanIUse](http://caniuse.com) são ótimos recursos para verificação de compatibilidade.
 
-
 ## Leitura
+
 * [Official Documentation](http://sass-lang.com/documentation/file.SASS_REFERENCE.html)
 * [The Sass Way](http://thesassway.com/) fornece tutoriais (iniciante avançados) e artigos.

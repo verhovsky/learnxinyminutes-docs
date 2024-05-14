@@ -17,7 +17,7 @@ Sass tiene dos sintaxis para elegir: SCSS, que usa la misma que CSS pero con las
 
 Si ya estás familiarizado con CSS3, vas a entender Sass relativamente rápido. Sass no ofrece nuevas propiedades de estilo, si no que añade herramientas para escribir tus CSS de manera más eficiente, haciendo su mantenimiento mucho más sencillo.
 
-```scss
+```sass
 //Los comentarios en una sola línea son eliminados cuando Sass es compilado a CSS.
 
 /* Los comentarios multi-línea se mantienen. */
@@ -39,16 +39,16 @@ $body-font: 'Roboto', sans-serif;
 Ahora, si quieres cambiar el color, sólo lo tienes que hacer una vez. */
 
 body {
-	background-color: $primary-color;
-	color: $secondary-color;
-	font-family: $body-font;
+  background-color: $primary-color;
+  color: $secondary-color;
+  font-family: $body-font;
 }
 
 /* Este código compilará en: */
 body {
-	background-color: #A3A4FF;
-	color: #51527F;
-	font-family: 'Roboto', sans-serif;
+  background-color: #A3A4FF;
+  color: #51527F;
+  font-family: 'Roboto', sans-serif;
 }
 
 /* El resultado es mucho más mantenible que tener que cambiar el color
@@ -68,18 +68,18 @@ cada vez que aparece en la hoja de estilos. */
 $debug: true !default;
 
 @mixin debugmode {
-	@if $debug {
-		@debug "Modo debug activado";
+  @if $debug {
+    @debug "Modo debug activado";
 
-		display: inline-block;
-	}
-	@else {
-		display: none;
-	}
+    display: inline-block;
+  }
+  @else {
+    display: none;
+  }
 }
 
 .info {
-	@include debugmode;
+  @include debugmode;
 }
 
 /* Si $debug es true, .info es mostrado; si es false entonces
@@ -89,7 +89,7 @@ Nota: @debug mostrará información de depuración en la consola.
 Es muy útil para ver el contenido de tus variables cuando estás depurando. */
 
 .info {
-	display: inline-block;
+  display: inline-block;
 }
 
 /* @for es un bucle que itera un conjunto de valores.
@@ -98,41 +98,41 @@ Hay dos formas "through" y "to". El primero incluye el último valor
 mientras que el segundo para antes del último valor. */
 
 @for $c from 1 to 4 {
-	div:nth-of-type(#{$c}) {
-		left: ($c - 1) * 900 / 3;
-	}
+  div:nth-of-type(#{$c}) {
+    left: ($c - 1) * 900 / 3;
+  }
 }
 
 @for $c from 1 through 3 {
-	.myclass-#{$c} {
-		color: rgb($c * 255 / 3, $c * 255 / 3, $c * 255 / 3);
-	}
+  .myclass-#{$c} {
+    color: rgb($c * 255 / 3, $c * 255 / 3, $c * 255 / 3);
+  }
 }
 
 /* Esto compila en: */
 
 div:nth-of-type(1) {
-	left: 0;
+  left: 0;
 }
 
 div:nth-of-type(2) {
-	left: 300;
+  left: 300;
 }
 
 div:nth-of-type(3) {
-	left: 600;
+  left: 600;
 }
 
 .myclass-1 {
-	color: #555555;
+  color: #555555;
 }
 
 .myclass-2 {
-	color: #aaaaaa;
+  color: #aaaaaa;
 }
 
 .myclass-3 {
-	color: white;
+  color: white;
 // SASS convierte automáticamente #FFFFFF a white
 }
 
@@ -142,34 +142,34 @@ $columns: 4;
 $column-width: 80px;
 
 @while $columns > 0 {
-	.col-#{$columns} {
-		width: $column-width;
-		left: $column-width * ($columns - 1);
-	}
+  .col-#{$columns} {
+    width: $column-width;
+    left: $column-width * ($columns - 1);
+  }
 
-	$columns: $columns - 1;
+  $columns: $columns - 1;
 }
 
 /* Esto se convierte en el siguiente CSS: */
 
 .col-4 {
-	width: 80px;
-	left: 240px;
+  width: 80px;
+  left: 240px;
 }
 
 .col-3 {
-	width: 80px;
-	left: 160px;
+  width: 80px;
+  left: 160px;
 }
 
 .col-2 {
-	width: 80px;
-	left: 80px;
+  width: 80px;
+  left: 80px;
 }
 
 .col-1 {
-	width: 80px;
-	left: 0px;
+  width: 80px;
+  left: 0px;
 }
 
 /* @each funciona parecido a @for, pero usa una lista en ver del valor ordinal
@@ -179,29 +179,29 @@ como delimitadores. */
 $social-links: facebook twitter linkedin reddit;
 
 .social-links {
-	@each $sm in $social-links {
-		.icon-#{$sm} {
-			background-image: url("images/#{$sm}.png");
-		}
-	}
+  @each $sm in $social-links {
+    .icon-#{$sm} {
+      background-image: url("images/#{$sm}.png");
+    }
+  }
 }
 
 /* Esto resultará en: */
 
 .social-links .icon-facebook {
-	background-image: url("images/facebook.png");
+  background-image: url("images/facebook.png");
 }
 
 .social-links .icon-twitter {
-	background-image: url("images/twitter.png");
+  background-image: url("images/twitter.png");
 }
 
 .social-links .icon-linkedin {
-	background-image: url("images/linkedin.png");
+  background-image: url("images/linkedin.png");
 }
 
 .social-links .icon-reddit {
-	background-image: url("images/reddit.png");
+  background-image: url("images/reddit.png");
 }
 
 
@@ -216,45 +216,45 @@ elemento, puede que quieras almacenarlo en un mixin.
 Usa la directiva '@mixin', más un nombre para tu mixin. */
 
 @mixin center {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	left: 0;
-	right: 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
 }
 
 /* Puedes usarlo con '@include' y el nombre del mixin. */
 
 div {
-	@include center;
-	background-color: $primary-color;
+  @include center;
+  background-color: $primary-color;
 }
 
 /* Esto compilará en: */
 div {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	left: 0;
-	right: 0;
-	background-color: #A3A4FF;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  background-color: #A3A4FF;
 }
 
 /* Puedes usar mixins para crear una propiedad shorthand. */
 
 @mixin size($width, $height) {
-	width: $width;
-	height: $height;
+  width: $width;
+  height: $height;
 }
 
 /* La que puedes invocar pasándole los argumentos width y height. */
 
 .rectangle {
-	@include size(100px, 60px);
+  @include size(100px, 60px);
 }
 
 .square {
-	@include size(40px, 40px);
+  @include size(40px, 40px);
 }
 
 /* Compila en: */
@@ -340,13 +340,13 @@ $main-content: calculate-percentage(600px, 960px);
 /* Extend es una manera de compartir propiedades de un selector con otro. */
 
 .display {
-	@include size(5em, 5em);
-	border: 5px solid $secondary-color;
+  @include size(5em, 5em);
+  border: 5px solid $secondary-color;
 }
 
 .display-success {
-	@extend .display;
-	border-color: #22df56;
+  @extend .display;
+  border-color: #22df56;
 }
 
 /* Compila en: */
@@ -376,12 +376,12 @@ $main-content: calculate-percentage(600px, 960px);
 /* Sass permite anidar selectores dentro de otros selectores. */
 
 ul {
-	list-style-type: none;
-	margin-top: 2em;
+  list-style-type: none;
+  margin-top: 2em;
 
-	li {
-		background-color: #FF0000;
-	}
+  li {
+    background-color: #FF0000;
+  }
 }
 
 /* '&' será reemplazado por el selector del padre. */
@@ -393,20 +393,20 @@ Como buena práctica, se recomienda no tener más de 3 niveles de anidación.
 Por ejemplo: */
 
 ul {
-	list-style-type: none;
-	margin-top: 2em;
+  list-style-type: none;
+  margin-top: 2em;
 
-	li {
-		background-color: red;
+  li {
+    background-color: red;
 
-		&:hover {
-		  background-color: blue;
-		}
+    &:hover {
+      background-color: blue;
+    }
 
-		a {
-		  color: white;
-		}
-	}
+    a {
+      color: white;
+    }
+  }
 }
 
 /* Compila en: */
@@ -563,20 +563,22 @@ body {
 ```
 
 ## ¿SASS o Sass?
+
 ¿Alguna vez has pensado si Sass es un acrónimo o no? Seguramente no, pero te lo vamos a explicar de todas maneras. "Sass" es una palabra, no un acrónimo.
 Como todo el mundo lo escribe como "SASS", el creador del lenguaje lo ha llamado de broma "Syntactically Awesome StyleSheets" (Hojas de estilo sintácticamente increíbles).
 
-
 ## Practica Sass
+
 Si quieres probar Sass en tu navegador, prueba  [SassMeister](http://sassmeister.com/).
 Puedes usar cualquier sintaxis, o elegir en la configuración entre Sass y SCSS.
 
 ## Compatibilidad
+
 Sass puede ser usado en cualquier proyecto mientras tengas un programa que lo compile en CSS. Quizás quieras comprobar si el CSS que estás usando es compatible con tus navegadores objetivo.
 
 [QuirksMode CSS](http://www.quirksmode.org/css/) y [CanIUse](http://caniuse.com) son buenos recursos para comprobar la compatibilidad de navegadores.
 
-
 ## Más información
+
 * [Documentación oficial (EN)](http://sass-lang.com/documentation/file.SASS_REFERENCE.html)
 * [The Sass Way (EN)](http://thesassway.com/) tiene tutoriales (para principiantes y avanzandos) and artículos.
